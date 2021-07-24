@@ -4,3 +4,25 @@
   Remplazar [index] por el valor ejemplo "user-list__table-item-0"
 -->
 
+<div class="card w-100">
+  <table id="user-list__table">
+    <thead>
+      <tr>
+        <th class="sortable">Email</th>
+        <th class="text">Name</th>
+        <th class="text">Image</th>
+        <th class="text">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let user of users$ | async; index as i" [id]="'user-list__table-item-'+i">
+        <td [id]="'user-list__table-item-'+i+'-email'">{{user.email}}</td>
+        <td [id]="'user-list__table-item-'+i+'-first_name'">{{user.first_name}} {{user.last_name}}</td>
+        <td [id]="'user-list__table-item-'+i+'-avatar'"><img [src]="user.avatar" [alt]="user.first_name"></td>
+        <td [id]="'user-list__table-item-'+i+'-btn-delete'">
+          <button class="danger small" (click)="onDelete(user.id)">Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

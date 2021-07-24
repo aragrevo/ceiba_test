@@ -1,0 +1,11 @@
+.card {
+  overflow: scroll;
+}
+
+table {
+  tbody {
+    img {
+      width: min(128px, 100%);
+    }
+  }
+}
