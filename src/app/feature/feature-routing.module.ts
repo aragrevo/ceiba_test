@@ -11,6 +11,7 @@ const routes: Routes = [
     loadChildren: () => import('./users/users.module').then(i => i.UsersModule),
   }, {
     path: 'login',
+    canActivate: [TokenGuard],
     loadChildren: () => import('./login/login.module').then(i => i.LoginModule),
   },
 ];
