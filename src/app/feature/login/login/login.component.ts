@@ -11,6 +11,7 @@ import { LoginService } from '@feature/login/shared/services/login/login.service
 export class LoginComponent implements OnInit {
 
   loginForm: FormGroup;
+  message = '';
   private readonly emailPattern = /\S+@\S+\.\S+/;
 
   get EmailField() {
@@ -33,20 +34,24 @@ export class LoginComponent implements OnInit {
 
   initForm(): void {
     this.loginForm = this.fb.group({
-      email: ['', [Validators.required, Validators.pattern(this.emailPattern)]],
-      password: ['', [Validators.required, Validators.minLength(8)]]
+      email: ['eve.holt@reqres.in', [Validators.required, Validators.pattern(this.emailPattern)]],
+      password: ['cityslicka', [Validators.required, Validators.minLength(8)]]
     })
   }
 
-  onLogin() {
+  async onLogin() {
     this.loginForm.markAllAsTouched();
 
     if (this.loginForm.invalid) return;
 
     const { email, password } = this.loginForm.value;
-    this.loginSvc.login(email, password);
-    this.redirectUsers();
-    this.loginForm.reset();
+    try {
+      await this.loginSvc.login(email, password);
+      this.redirectUsers();
+      this.loginForm.reset();
+    } catch (error) {
+      this.message = error
+    }
   }
 
   isValidField(field: string): string {

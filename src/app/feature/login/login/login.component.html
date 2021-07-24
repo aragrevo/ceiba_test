@@ -26,5 +26,8 @@
     <section class="card-actions justify-content-center pt-0">
       <button class="w-100" id="login__btn-login" type="submit" [disabled]="loginForm.invalid">Log In</button>
     </section>
+    <div class="alert error" *ngIf="!!message">
+      {{message}}
+    </div>
   </form>
 </div>
