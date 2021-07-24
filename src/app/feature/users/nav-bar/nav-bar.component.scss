@@ -1,0 +1,19 @@
+ul {
+  display: flex;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+
+  li {
+    padding: 0 0.5rem;
+
+    a.router-link-active {
+      text-decoration: none;
+      border-bottom: 1px solid var(--secondary-color);
+    }
+  }
+}
+
+.space {
+  flex: 1;
+}

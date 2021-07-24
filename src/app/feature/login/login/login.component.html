@@ -6,14 +6,14 @@
   <form novalidate class="card w-75" (ngSubmit)="onLogin()" [formGroup]="loginForm">
     <section class="card-text">
       <label>
-        <input type="text" class="white large mb-10" id="login__email" placeholder="Email" formControlName="email"
-          [class]="isValidField('email')">
+        <input type="text" class="white large outline mb-10" id="login__email" placeholder="Email"
+          formControlName="email" [class]="isValidField('email')">
         <p class="form-hint error-text mt-0" id="login__email-error"
           *ngIf="EmailField.errors?.required && EmailField.touched">Email is
           required</p>
       </label>
       <label>
-        <input type="text" class="white large mb-10" id="login__password" placeholder="Password"
+        <input type="text" class="white large outline mb-10" id="login__password" placeholder="Password"
           formControlName="password" [class]="isValidField('password')">
         <p class="form-hint error-text mt-0" id="login__password-error"
           *ngIf="PasswordField.errors?.required && PasswordField.touched">Password
