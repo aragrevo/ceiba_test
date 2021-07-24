@@ -4,15 +4,16 @@
 -->
 <nav class="app-header">
   <ul>
-    <li id="nav-bar__btn-list-user">
-      <a [routerLink]="['/users/list']" routerLinkActive="router-link-active">List User</a>
+    <li>
+      <a id="nav-bar__btn-list-user" [routerLink]="['/users/list']" routerLinkActive="router-link-active">List User</a>
     </li>
-    <li id="nav-bar__btn-create-user">
-      <a [routerLink]="['/users/create']" routerLinkActive="router-link-active">Create User</a>
+    <li>
+      <a id="nav-bar__btn-create-user" [routerLink]="['/users/create']" routerLinkActive="router-link-active">Create
+        User</a>
     </li>
     <div class="space"></div>
-    <li id="nav-bar__btn-logout">
-      <a class="button secondary text" (click)="logout()">Log Out</a>
+    <li>
+      <a id="nav-bar__btn-logout" class="button secondary text" (click)="logout()">Log Out</a>
     </li>
   </ul>
 </nav>
