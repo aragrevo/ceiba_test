@@ -46,11 +46,12 @@ export class LoginComponent implements OnInit {
 
     const { email, password } = this.loginForm.value;
     try {
-      await this.loginSvc.login(email, password);
+      const { token } = await this.loginSvc.login(email, password);
+      this.setLocalStorage(token);
       this.redirectUsers();
       this.loginForm.reset();
-    } catch (error) {
-      this.message = error
+    } catch ({ error }) {
+      this.message = error.error
     }
   }
 
@@ -59,6 +60,9 @@ export class LoginComponent implements OnInit {
     return (!validatedField.valid && validatedField.touched) ? 'error' : (validatedField.touched ? 'success' : '')
   }
 
+  private setLocalStorage(token: string) {
+    localStorage.setItem('token', token);
+  }
 
 
   /**
