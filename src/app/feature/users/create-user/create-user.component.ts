@@ -52,8 +52,8 @@ export class CreateUserComponent implements OnInit {
     const { name, job } = this.userForm.value;
     try {
       await this.usersSvc.createUser(name, job);
-      this.usersSvc.setMessage(`The user ${name} was create`);
       this.redirectToListUsers();
+      this.usersSvc.setMessage(`The user ${name} was create`);
       this.userForm.reset();
     } catch (error) {
       this.message = error
