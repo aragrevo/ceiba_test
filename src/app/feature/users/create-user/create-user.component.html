@@ -8,16 +8,14 @@
       <label class="w-75">
         <input type="text" class="white large outline mb-10 w-100" id="user-create__name" placeholder="Name"
           formControlName="name" [class]="isValidField('name')">
-        <p class="form-hint error-text mt-0" id="user-create__name-error"
-          *ngIf="NameField.errors?.required && NameField.touched">Name is
+        <p class="form-hint error-text mt-0" id="user-create__name-error" *ngIf="NameField.errors?.required">Name is
           required
         </p>
       </label>
       <label class="w-75">
         <input type="text" class="white large outline mb-10 w-100" id="user-create__job" placeholder="Job"
           formControlName="job" [class]="isValidField('job')">
-        <p class="form-hint error-text mt-0" id="user-create__job-error"
-          *ngIf="JobField.errors?.required && JobField.touched">Job
+        <p class="form-hint error-text mt-0" id="user-create__job-error" *ngIf="JobField.errors?.required">Job
           is required
         </p>
       </label>

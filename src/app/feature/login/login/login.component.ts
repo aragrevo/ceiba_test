@@ -30,6 +30,8 @@ export class LoginComponent implements OnInit {
   }
   ngOnInit(): void {
     this.initForm();
+    const token = this.getLocalStorage();
+    if (!!token) this.redirectUsers();
   }
 
   initForm(): void {
@@ -60,8 +62,12 @@ export class LoginComponent implements OnInit {
     return (!validatedField.valid && validatedField.touched) ? 'error' : (validatedField.touched ? 'success' : '')
   }
 
-  private setLocalStorage(token: string) {
+  private setLocalStorage(token: string): void {
     localStorage.setItem('token', token);
+  }
+
+  private getLocalStorage(): string {
+    return localStorage.getItem('token');
   }
 
 
