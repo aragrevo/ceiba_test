@@ -19,10 +19,8 @@ export class ListUsersComponent implements OnInit {
     this.getUsers();
   }
 
-  getUsers() {
-    this.usersSvc.getUsers()
-      .then(users => this.users = users)
-      .catch(error => this.users = []);
+  async getUsers() {
+    this.users = await this.usersSvc.getUsers()
   }
 
   async onDelete(id: number) {

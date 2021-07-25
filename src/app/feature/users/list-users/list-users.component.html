@@ -21,9 +21,18 @@
       </thead>
       <tbody>
         <tr *ngFor="let user of (users |filterUserByName:valueSearch); index as i" [id]="'user-list__table-item-'+i">
-          <td [id]="'user-list__table-item-'+i+'-email'">{{user.email}}</td>
-          <td [id]="'user-list__table-item-'+i+'-first_name'">{{user.first_name}} {{user.last_name}}</td>
-          <td><img [id]="'user-list__table-item-'+i+'-avatar'" [src]="user.avatar" [alt]="user.first_name"></td>
+          <td>
+            <p [id]="'user-list__table-item-'+i+'-email'">{{user.email}}</p>
+          </td>
+          <td>
+            <p>
+              <span [id]="'user-list__table-item-'+i+'-first_name'">{{user.first_name}}</span>
+              <span> {{user.last_name}}</span>
+            </p>
+          </td>
+          <td>
+            <img [id]="'user-list__table-item-'+i+'-avatar'" [src]="user.avatar" [alt]="user.first_name">
+          </td>
           <td>
             <button [id]="'user-list__table-item-'+i+'-btn-delete'" class="danger small"
               (click)="onDelete(user.id)">Delete</button>
