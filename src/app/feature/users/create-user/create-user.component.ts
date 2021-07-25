@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+
+import { UsersService } from './shared/services/users/users.service';
 
 @Component({
   selector: 'app-create-user',
@@ -8,12 +11,53 @@ import { Router } from '@angular/router';
 })
 export class CreateUserComponent implements OnInit {
 
-  constructor(
-    private readonly router: Router
-  ) {
+  userForm: FormGroup;
+  message = '';
+
+  get NameField() {
+    return this.userForm.get('name')
   }
+
+  get JobField() {
+    return this.userForm.get('job')
+  }
+
+  constructor(
+    private fb: FormBuilder,
+    private readonly router: Router,
+    private usersSvc: UsersService
+  ) { }
+
   ngOnInit(): void {
-    throw new Error('Method not implemented.');
+    this.initForm();
+  }
+
+  initForm(): void {
+    this.userForm = this.fb.group({
+      name: ['', [Validators.required]],
+      job: ['', [Validators.required]]
+    })
+  }
+
+  isValidField(field: string): string {
+    const validatedField = this.userForm.get(field);
+    return (!validatedField.valid && validatedField.touched) ? 'error' : (validatedField.touched ? 'success' : '')
+  }
+
+  async onCreate() {
+    this.userForm.markAllAsTouched();
+
+    if (this.userForm.invalid) return;
+
+    const { name, job } = this.userForm.value;
+    try {
+      await this.usersSvc.createUser(name, job);
+      this.usersSvc.newName = name;
+      this.redirectToListUsers();
+      this.userForm.reset();
+    } catch (error) {
+      this.message = error
+    }
   }
 
   /**

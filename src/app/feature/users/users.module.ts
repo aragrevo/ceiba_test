@@ -8,11 +8,12 @@ import { UsersRoutingModule } from './users-routing.module';
 import { FilterUserByNamePipe } from '@shared/pipes/filter-user-by-name/filter-user-by-name.pipe';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { HomeUserComponent } from './home-user/home-user.component';
+import { CreateUserComponent } from './create-user/create-user.component';
 import { ListUsersComponent } from '@feature/users/list-users/list-users.component';
 
 
 @NgModule({
-    declarations: [HomeUserComponent, NavBarComponent, ListUsersComponent],
+    declarations: [HomeUserComponent, NavBarComponent, ListUsersComponent, CreateUserComponent],
     imports: [
         CommonModule,
         UsersRoutingModule,

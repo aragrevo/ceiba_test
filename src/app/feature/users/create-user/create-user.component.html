@@ -2,3 +2,29 @@
   Recuerde conservar los id, no deben ser modificados
   ids = user-create__name, user-create__name-error, user-create__job, user-create__job-error, user-create__btn-create
 -->
+<div class="layout-row justify-content-center my-50">
+  <form novalidate class="card w-75" (ngSubmit)="onCreate()" [formGroup]="userForm">
+    <section class="card-text layout-column align-items-center">
+      <label class="w-75">
+        <input type="text" class="white large outline mb-10 w-100" id="user-create__name" placeholder="Name"
+          formControlName="name" [class]="isValidField('name')">
+        <p class="form-hint error-text mt-0" id="user-create__name-error"
+          *ngIf="NameField.errors?.required && NameField.touched">Name is
+          required</p>
+      </label>
+      <label class="w-75">
+        <input type="text" class="white large outline mb-10 w-100" id="user-create__job" placeholder="Job"
+          formControlName="job" [class]="isValidField('job')">
+        <p class="form-hint error-text mt-0" id="user-create__job-error"
+          *ngIf="JobField.errors?.required && JobField.touched">Job
+          is required
+      </label>
+    </section>
+    <section class="card-actions justify-content-center pt-0">
+      <button class="w-100" id="user-create__btn-create" type="submit" [disabled]="userForm.invalid">Send</button>
+    </section>
+    <div class="alert error" *ngIf="!!message">
+      {{message}}
+    </div>
+  </form>
+</div>

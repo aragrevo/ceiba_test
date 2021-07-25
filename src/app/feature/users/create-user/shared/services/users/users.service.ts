@@ -1,9 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { map, tap } from 'rxjs/operators';
 
 import { environment } from '@environments/environment';
-import { User } from '@feature/users/create-user/shared/models/user';
+import { ResponseCreateUser, ResponseGetUsers } from '../../models/response-users';
+
 /**
  * El nombre de las clases o métodos no se pueden cambiar
  * */
@@ -11,35 +11,24 @@ import { User } from '@feature/users/create-user/shared/models/user';
   providedIn: 'root',
 })
 export class UsersService {
-  private baseUrl = environment.API;
+  private baseUrl = `${environment.API}/users`;
+  newName: string = null;
 
   constructor(private readonly http: HttpClient) { }
 
 
   getUsers() {
-    return this.http.get<any>(`${this.baseUrl}/users`)
-      // .pipe(
-      //   map((response: any) => response.data as User[]),
-      //   tap(data => {
-      //     console.log(data)
-      //   })
-      // )
+    return this.http.get<ResponseGetUsers>(`${this.baseUrl}`)
       .toPromise()
   }
 
-  createUser() {
-
+  createUser(name: string, job: string) {
+    return this.http.post<ResponseCreateUser>(`${this.baseUrl}`, { name, job })
+      .toPromise()
   }
 
   deleteUserForIndex(index: number) {
-    return new Promise((resolve, reject) => {
-      this.http.delete(`${this.baseUrl}/users/${index}`)
-        .subscribe(() => {
-          resolve(true)
-        }, error => {
-          debugger
-          reject(error.message)
-        })
-    })
+    return this.http.delete(`${this.baseUrl}/${index}`)
+      .toPromise()
   }
 }

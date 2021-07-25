@@ -8,6 +8,22 @@
   <input type="text" id="user-list__filter" class="white large outlined" placeholder="Search" [(ngModel)]="valueSearch">
 </section>
 
+<section class="layout-row align-items-center justify-content-center mt-10">
+  <div class="w-35" *ngIf="!!newUser">
+    <div class="alert outline info">
+      {{newUser}}
+    </div>
+  </div>
+</section>
+
+<section class="layout-row align-items-center justify-content-center mt-10">
+  <div class="w-35" *ngIf="!!message">
+    <div class="alert outline info">
+      {{message}}
+    </div>
+  </div>
+</section>
+
 <div class="layout-row align-items-center justify-content-center mt-10">
   <div class="card w-75">
     <table id="user-list__table">
