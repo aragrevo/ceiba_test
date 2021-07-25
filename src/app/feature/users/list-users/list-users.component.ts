@@ -44,9 +44,9 @@ export class ListUsersComponent implements OnInit {
 
   private setMessage(message: string) {
     this.message = message
-    setTimeout(() => {
-      this.message = null;
-    }, 5000);
+    // setTimeout(() => {
+    //   this.message = null;
+    // }, 5000);
   }
 
 
