@@ -1,6 +1,5 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
 import { map, tap } from 'rxjs/operators';
 
 import { environment } from '@environments/environment';
@@ -13,22 +12,19 @@ import { User } from '@feature/users/create-user/shared/models/user';
 })
 export class UsersService {
   private baseUrl = environment.API;
-  users: Observable<User[]>
 
-  constructor(private readonly http: HttpClient) {
-    this.getUsers()
-  }
+  constructor(private readonly http: HttpClient) { }
 
 
   getUsers() {
-    this.users = this.http.get(`${this.baseUrl}/users`)
+    return this.http.get<User[]>(`${this.baseUrl}/users`)
       .pipe(
         map((response: any) => response.data as User[]),
         tap(data => {
-          debugger
           console.log(data)
         })
       )
+      .toPromise()
   }
 
   createUser() {

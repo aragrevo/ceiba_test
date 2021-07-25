@@ -1,3 +1,4 @@
+import { User } from '@feature/users/create-user/shared/models/user';
 import { Component, OnInit } from '@angular/core';
 
 import { UsersService } from '@feature/users/create-user/shared/services/users/users.service';
@@ -9,16 +10,24 @@ import { UsersService } from '@feature/users/create-user/shared/services/users/u
 })
 export class ListUsersComponent implements OnInit {
 
-  users$ = this.usersSvc.users;
+  users: User[] = [];
+  valueSearch = '';
 
   constructor(private usersSvc: UsersService) { }
 
-  ngOnInit() { }
+  ngOnInit() {
+    this.getUsers();
+  }
+
+  async getUsers() {
+    this.users = await this.usersSvc.getUsers()
+  }
 
   async onDelete(id: number) {
     console.log(id)
     try {
       await this.usersSvc.deleteUserForIndex(id)
+      // this.getUsers();
     } catch (error) {
       debugger
     }

@@ -4,25 +4,32 @@
   Remplazar [index] por el valor ejemplo "user-list__table-item-0"
 -->
 
-<div class="card w-100">
-  <table id="user-list__table">
-    <thead>
-      <tr>
-        <th class="sortable">Email</th>
-        <th class="text">Name</th>
-        <th class="text">Image</th>
-        <th class="text">Actions</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let user of users$ | async; index as i" [id]="'user-list__table-item-'+i">
-        <td [id]="'user-list__table-item-'+i+'-email'">{{user.email}}</td>
-        <td [id]="'user-list__table-item-'+i+'-first_name'">{{user.first_name}} {{user.last_name}}</td>
-        <td [id]="'user-list__table-item-'+i+'-avatar'"><img [src]="user.avatar" [alt]="user.first_name"></td>
-        <td [id]="'user-list__table-item-'+i+'-btn-delete'">
-          <button class="danger small" (click)="onDelete(user.id)">Delete</button>
-        </td>
-      </tr>
-    </tbody>
-  </table>
+<section class="layout-row align-items-center justify-content-center mt-10">
+  <input type="text" id="user-list__filter" class="white large outlined" placeholder="Search" [(ngModel)]="valueSearch">
+</section>
+
+<div class="layout-row align-items-center justify-content-center mt-10">
+  <div class="card w-75">
+    <table id="user-list__table">
+      <thead>
+        <tr>
+          <th class="sortable">Email</th>
+          <th class="text">Name</th>
+          <th class="text">Image</th>
+          <th class="text">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let user of (users |filterUserByName:valueSearch); index as i" [id]="'user-list__table-item-'+i">
+          <td [id]="'user-list__table-item-'+i+'-email'">{{user.email}}</td>
+          <td [id]="'user-list__table-item-'+i+'-first_name'">{{user.first_name}} {{user.last_name}}</td>
+          <td><img [id]="'user-list__table-item-'+i+'-avatar'" [src]="user.avatar" [alt]="user.first_name"></td>
+          <td>
+            <button [id]="'user-list__table-item-'+i+'-btn-delete'" class="danger small"
+              (click)="onDelete(user.id)">Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </div>
