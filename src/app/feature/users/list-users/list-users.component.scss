@@ -1,7 +1,3 @@
-.card {
-  overflow-x: scroll;
-}
-
 table {
   tbody {
     img {
@@ -10,4 +6,11 @@ table {
   }
 }
 
-// TODO: media query
+@media screen and (max-width: 760px) {
+  .card {
+    overflow-x: scroll;
+  }
+  table tbody tr td:first-child {
+    padding-left: 16px;
+  }
+}

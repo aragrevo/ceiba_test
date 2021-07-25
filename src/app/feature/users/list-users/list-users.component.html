@@ -9,19 +9,11 @@
 </section>
 
 <section class="layout-row align-items-center justify-content-center mt-10">
-  <div class="w-35" *ngIf="!!newUser">
+  <ng-container *ngIf="!!(message$ | async)">
     <div class="alert outline info">
-      {{newUser}}
+      {{message$ | async}}
     </div>
-  </div>
-</section>
-
-<section class="layout-row align-items-center justify-content-center mt-10">
-  <div class="w-35" *ngIf="!!message">
-    <div class="alert outline info">
-      {{message}}
-    </div>
-  </div>
+  </ng-container>
 </section>
 
 <div class="layout-row align-items-center justify-content-center mt-10">

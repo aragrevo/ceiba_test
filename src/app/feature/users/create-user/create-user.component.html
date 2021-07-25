@@ -4,16 +4,16 @@
 -->
 <div class="layout-row justify-content-center my-50">
   <form novalidate class="card w-75" (ngSubmit)="onCreate()" [formGroup]="userForm">
-    <section class="card-text layout-column align-items-center">
-      <label class="w-75">
-        <input type="text" class="white large outline mb-10 w-100" id="user-create__name" placeholder="Name"
+    <section class="card-text">
+      <label class="layout-column justify-content-center">
+        <input type="text" class="white large outline mb-10" id="user-create__name" placeholder="Name"
           formControlName="name" [class]="isValidField('name')">
         <p class="form-hint error-text mt-0" id="user-create__name-error" *ngIf="NameField.errors?.required">Name is
           required
         </p>
       </label>
-      <label class="w-75">
-        <input type="text" class="white large outline mb-10 w-100" id="user-create__job" placeholder="Job"
+      <label class="layout-column justify-content-center">
+        <input type="text" class="white large outline mb-10" id="user-create__job" placeholder="Job"
           formControlName="job" [class]="isValidField('job')">
         <p class="form-hint error-text mt-0" id="user-create__job-error" *ngIf="JobField.errors?.required">Job
           is required

@@ -12,8 +12,7 @@ export class ListUsersComponent implements OnInit {
 
   users: User[] = [];
   valueSearch = '';
-  message: string = null;
-  newUser = this.usersSvc.newName;
+  message$ = this.usersSvc.message$;
 
   constructor(private usersSvc: UsersService) { }
 
@@ -35,20 +34,11 @@ export class ListUsersComponent implements OnInit {
     try {
       await this.usersSvc.deleteUserForIndex(id)
       const userNameDeleted = this.users.find(user => user.id === id).first_name;
-      this.setMessage(`The user ${userNameDeleted} was deleted`);
+      this.usersSvc.setMessage(`The user ${userNameDeleted} was deleted`)
       this.users = this.users.filter(user => user.id !== id);
     } catch (error) {
       console.log({ error })
     }
   }
-
-  private setMessage(message: string) {
-    this.message = message
-    // setTimeout(() => {
-    //   this.message = null;
-    // }, 5000);
-  }
-
-
 
 }

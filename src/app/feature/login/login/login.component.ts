@@ -29,9 +29,9 @@ export class LoginComponent implements OnInit {
   ) {
   }
   ngOnInit(): void {
-    this.initForm();
     const token = this.getLocalStorage();
-    if (!!token) this.redirectUsers();
+    if (!!token) return this.redirectUsers();
+    this.initForm();
   }
 
   initForm(): void {

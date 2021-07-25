@@ -5,14 +5,14 @@
 <div class="layout-row justify-content-center my-50">
   <form novalidate class="card w-75" (ngSubmit)="onLogin()" [formGroup]="loginForm">
     <section class="card-text">
-      <label>
+      <label class="layout-column justify-content-center">
         <input type="text" class="white large outline mb-10" id="login__email" placeholder="Email"
           formControlName="email" [class]="isValidField('email')">
         <p class="form-hint error-text mt-0" id="login__email-error"
           *ngIf="EmailField.errors?.required && EmailField.touched">Email is
           required</p>
       </label>
-      <label>
+      <label class="layout-column justify-content-center">
         <input type="text" class="white large outline mb-10" id="login__password" placeholder="Password"
           formControlName="password" [class]="isValidField('password')">
         <p class="form-hint error-text mt-0" id="login__password-error"
