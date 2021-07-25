@@ -17,13 +17,13 @@ export class UsersService {
 
 
   getUsers() {
-    return this.http.get<User[]>(`${this.baseUrl}/users`)
-      .pipe(
-        map((response: any) => response.data as User[]),
-        tap(data => {
-          console.log(data)
-        })
-      )
+    return this.http.get<any>(`${this.baseUrl}/users`)
+      // .pipe(
+      //   map((response: any) => response.data as User[]),
+      //   tap(data => {
+      //     console.log(data)
+      //   })
+      // )
       .toPromise()
   }
 

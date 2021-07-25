@@ -20,7 +20,8 @@ export class ListUsersComponent implements OnInit {
   }
 
   async getUsers() {
-    this.users = await this.usersSvc.getUsers()
+    const { data } = await this.usersSvc.getUsers()
+    this.users = data
   }
 
   async onDelete(id: number) {
