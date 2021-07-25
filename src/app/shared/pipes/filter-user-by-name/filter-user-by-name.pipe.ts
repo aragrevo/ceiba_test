@@ -6,7 +6,7 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class FilterUserByNamePipe implements PipeTransform {
 
-  transform(users: User[], query: string = null) {
+  transform(users: User[] = [], query: string = null) {
     if (!query || query.length < 3) return users
 
     const queryLower = query.toLowerCase();

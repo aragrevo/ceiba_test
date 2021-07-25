@@ -19,8 +19,10 @@ export class ListUsersComponent implements OnInit {
     this.getUsers();
   }
 
-  async getUsers() {
-    this.users = await this.usersSvc.getUsers()
+  getUsers() {
+    this.usersSvc.getUsers()
+      .then(users => this.users = users)
+      .catch(error => this.users = []);
   }
 
   async onDelete(id: number) {

@@ -74,8 +74,6 @@ describe('List users', () => {
     expect(avatar.tagName).toEqual('IMG');
     expect(btnDelete.tagName).toEqual('BUTTON');
     expect(email.textContent).toEqual(data[index].email);
-    console.log(email.textContent);
-
     expect(firstName.textContent).toEqual(data[index].first_name);
   }));
 
